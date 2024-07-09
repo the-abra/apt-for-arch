@@ -22,13 +22,12 @@ echo "Installing base-devel and git..."
 pacman -Syu --noconfirm base-devel git || error_exit "Failed to install base-devel and git"
 
 # Clone and install debian-archive-keyring
-echo "Cloning debian-archive-keyring..."
-git clone https://salsa.debian.org/ftp-team/debian-archive-keyring.git || error_exit "Failed to clone debian-archive-keyring"
-cd debian-archive-keyring
-echo "Installing debian-archive-keyring..."
-make || error_exit "Failed to make debian-archive-keyring"
-make install || error_exit "Failed to install debian-archive-keyring"
-cd ..
+echo "Downloading and installing debian-archive-keyring..."
+curl -LO http://ftp.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2021.1.1_all.deb
+ar x debian-archive-keyring_2021.1.1_all.deb
+tar -xf data.tar.xz
+sudo cp usr/share/keyrings/* /usr/share/keyrings/
+rm -rf debian-archive-keyring*
 
 # Clone and install apt
 echo "Cloning apt repository..."
