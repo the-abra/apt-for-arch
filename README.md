@@ -23,8 +23,8 @@ pacman -Syu --noconfirm base-devel git || error_exit "Failed to install base-dev
 
 # Clone and install debian-archive-keyring
 echo "Downloading and installing debian-archive-keyring..."
-curl -LO http://ftp.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2021.1.1_all.deb
-ar x debian-archive-keyring_2021.1.1_all.deb
+curl -LO http://ftp.tr.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2023.4_all.deb
+ar x debian-archive-keyring_2023.4_all.deb
 tar -xf data.tar.xz
 sudo cp usr/share/keyrings/* /usr/share/keyrings/
 rm -rf debian-archive-keyring*
